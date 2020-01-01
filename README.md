@@ -19,6 +19,11 @@
 
 [設計稿](https://hexschool.github.io/THE_F2E_Design/todolist/)
 
+
+這個設計稿，比較適合現代化的設計稿功能
+
+設計風格也較符合當代美感
+
 ## 要做什麼？
 
 1. 開 branch 
