@@ -33,7 +33,7 @@
 
 ## JS 練習說明
 
-1. 複製 3 個資料夾: 
+1. 將原本的程式碼，各別 3 個資料夾，並以下面名稱命名: 
     - [Vanilla JS](http://vanilla-js.com/)
     - [jQuery](https://jquery.com/)
     - [Vuejs](https://vuejs.org/)
