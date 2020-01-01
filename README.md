@@ -33,7 +33,7 @@
 
 ## JS 練習說明
 
-1. 將原本的程式碼，各別 3 個資料夾，並以下面名稱命名: 
+1. 將原本的切版原碼，各別複製到 3 個資料夾，並以下面名稱命名: 
     - [Vanilla JS](http://vanilla-js.com/)
     - [jQuery](https://jquery.com/)
     - [Vuejs](https://vuejs.org/)
@@ -42,6 +42,8 @@
 4. 用 Jest 測試 Vanilla JS
 5. 注意 commit 的程式碼範圍大小、commit message 與內容是否吻合
 6. 上傳 branch (還是自己的英文名字)
+
+最後，會留下三種 JS 寫法的 todo list 並且不會留下純切版的 code
 
 ## 提醒
 
