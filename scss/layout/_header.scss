@@ -1,12 +1,12 @@
 .body-header {
   background: $royal-blue;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .label-link {
   text-align: center;
-  flex: 0 0 24%;
-  margin: 0 3%;
+  flex: 0 0 25%;
+  margin: 0 2%;
   padding: 20px 0;
   @include fontstyle(14px, regular, $navy-blue, 1.4);
 }
@@ -17,7 +17,7 @@
 
 @include mediaquery_phone {
   .body-header {
-    padding: 0 21%;
+    padding: 0 20%;
   }
 }
 
