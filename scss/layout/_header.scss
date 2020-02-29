@@ -15,7 +15,7 @@
   box-shadow: inset 0 -3px $navy-blue;
 }
 
-@include mediaquery_pc {
+@include mediaquery_phone {
   .body-header {
     padding: 0 21%;
   }
