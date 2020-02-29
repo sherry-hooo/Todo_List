@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<i class="far fa-star"></i>
+<i class="fas fa-pen"></i>
+<i class="far fa-calendar-alt"></i>
+<i class="far fa-file"></i>
+<i class="far fa-comment-dots"></i>
+<i class="fas fa-times"></i>
+<i class="fas fa-plus"></i>
+
+<body>
+  <header>
+    <a href="##" classs="lable-link">My Tasks</a>
+    <a href="##" classs="lable-link">In Progress</a>
+    <a href="##" classs="lable-link">Completed</a>
+  </header>
+  <main>
+    <section class="add">
+      <button><i class="fas fa-plus"></i></button>
+      <input type="text" placeholder="Add Task">
+    </section>
+    <div class="my-tasks">
+      <section class="task">
+        <header>
+          <h2 class=""><input type="checkbox"><input type="text" placeholder="Type Something Here..."></h2>
+          <div class="status">
+            <span class="status-star"><i class="far fa-star"></i></span>
+            <span class="status-pen"><i class="fas fa-pen"></i></span>
+          </div>
+          <div class="tag">
+            <div class="tag-wrap">
+              <span class="tag-unit tag-time">
+                <i class="far fa-calendar-alt"></i><time>4/17</time>
+              </span>
+              <span class="tag-unit tag-file">
+                <i class="far fa-file"></i>
+              </span>
+              <span class="tag-unit tag-comment">
+                <i class="far fa-comment-dots"></i>
+              </span>
+            </div>
+          </div>
+        </header>
+        <div class="task-edit">
+          <section class="task-edit-deadline">
+            <h3><i class="far fa-calendar-alt"></i>Deadline</h3>
+            <form action="">
+              <input type="date" value="2020-01-01">
+              <input type="time" value="22:50">
+            </form>
+          </section>
+          <section class="task-edit-file">
+            <h3><i class="far fa-file"></i>File</h3>
+            <div class="file-caption">
+              <h4>File Name</h4>
+              <time>upload yesterday</time>
+            </div>
+            <button type="menu"><i class="fas fa-plus"></i></button>
+          </section>
+          <section class="task-edit-comment">
+            <h3><i class="far fa-comment-dots"></i>Comment</h3>
+            <textarea name="" id="" cols="30" rows="10" placeholder="type something..."></textarea>
+          </section>
+          <div class="task-edit-btn-group">
+            <button class="btn-cancel"><i class="fas fa-times"></i>Cancel</button>
+            <button class="btn-save"><i class="fas fa-plus"></i>Save</button>
+          </div>
+        </div>
+      </section>
+      <p class="task-count"><span>0</span> task left</p>
+    </div>
+    <div class="in-progress">
+
+    </div>
+    <div class="completed">
+
+    </div>
+  </main>
+</body>
+
+</html>

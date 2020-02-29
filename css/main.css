@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i&display=swap");
+/* line 1, scss/base/_reset.scss */
+body, h1, h2, h3, h4, p {
+  margin: 0; }
+
+/* line 5, scss/base/_reset.scss */
+*, *::before, *::after {
+  box-sizing: border-box; }
+
+/* line 9, scss/base/_reset.scss */
+input, button {
+  border: none; }
+
+/* line 13, scss/base/_reset.scss */
+input:focus, button:focus {
+  outline: none; }
+
+/* line 17, scss/base/_reset.scss */
+a {
+  text-decoration: none; }
+
+/* line 3, scss/abstract/_typogrphy.scss */
+html {
+  font-family: 'Roboto', 'sans-serif'; }
