@@ -4,8 +4,9 @@ html {
   font-family: 'Roboto', 'sans-serif';
 }
 
-@mixin fontstyle($size, $weight, $color) {
+@mixin fontstyle($size, $weight, $color, $height) {
   font-size: $size;
   font-weight: $weight;
+  line-height: $height;
   color: $color;
 }
