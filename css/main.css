@@ -23,17 +23,36 @@ a {
 html {
   font-family: 'Roboto', 'sans-serif'; }
 
+/* line 1, scss/component/_card.scss */
+.task {
+  background: #F2F2F2;
+  border-radius: 3px; }
+  /* line 4, scss/component/_card.scss */
+  .task-header {
+    padding: 12px 16px; }
+
+/* line 1, scss/layout/_substrate.scss */
+body {
+  background: #E1E1E1; }
+  /* line 3, scss/layout/_substrate.scss */
+  body main {
+    padding: 24px 5% 46px 5%; }
+    @media all and (min-width: 576px) {
+      /* line 3, scss/layout/_substrate.scss */
+      body main {
+        padding: 24px 20% 46px 20%; } }
+
 /* line 1, scss/layout/_header.scss */
 .body-header {
   background: #4A90E2;
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-between; }
 
 /* line 6, scss/layout/_header.scss */
 .label-link {
   text-align: center;
-  flex: 0 0 24%;
-  margin: 0 3%;
+  flex: 0 0 25%;
+  margin: 0 2%;
   padding: 20px 0;
   font-size: 14px;
   font-weight: regular;
@@ -45,7 +64,42 @@ html {
   color: #fff;
   box-shadow: inset 0 -3px #00408B; }
 
-@media all and (min-width: 992px) {
+@media all and (min-width: 576px) {
   /* line 19, scss/layout/_header.scss */
   .body-header {
-    padding: 0 21%; } }
+    padding: 0 20%; } }
+
+/* line 1, scss/layout/_in-progress.scss */
+.add {
+  margin-bottom: 24px; }
+
+/* line 5, scss/layout/_in-progress.scss */
+.add-form {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #C8C8C8;
+  padding: 5px;
+  font-size: 0; }
+  /* line 11, scss/layout/_in-progress.scss */
+  .add-form button, .add-form input::placeholder {
+    font-size: 14px;
+    font-weight: regular;
+    line-height: 1.6;
+    color: #E1E1E1; }
+  /* line 14, scss/layout/_in-progress.scss */
+  .add-form button {
+    display: inline-block;
+    vertical-align: middle;
+    background: inherit; }
+    /* line 18, scss/layout/_in-progress.scss */
+    .add-form button:active {
+      color: #C8C8C8; }
+  /* line 22, scss/layout/_in-progress.scss */
+  .add-form input {
+    display: inline-block;
+    vertical-align: middle; }
+
+@media all and (min-width: 992px) {
+  /* line 30, scss/layout/_in-progress.scss */
+  .add-form button, .add-form input, .add-form input::placeholder {
+    font-size: 24px; } }
