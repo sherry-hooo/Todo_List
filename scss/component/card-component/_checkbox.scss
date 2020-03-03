@@ -1,0 +1,26 @@
+.checkbox {
+  display: inline-block;
+}
+.ckeck-itself {
+  display: none;
+}
+.ckeck-custom {
+  display: inline-block;
+  vertical-align: middle;
+  background: $white;
+  padding: 2px 3px;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 12px;
+  color: $white;
+}
+.ckeck-itself:checked ~ .ckeck-custom {
+  background: $royal-blue;
+}
+
+@include mediaquery_pad {
+  .ckeck-custom {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+}

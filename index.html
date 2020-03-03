@@ -24,27 +24,32 @@
     </section>
     <div class="my-tasks">
       <section class="task">
-        <header class="task-header">
-          <h2 class=""><input type="checkbox"><input type="text" placeholder="Type Something Here..."></h2>
-          <div class="status">
-            <span class="status-star"><i class="far fa-star"></i></span>
-            <span class="status-pen"><i class="fas fa-pen"></i></span>
+        <header class="task-title major-task-bg">
+          <h2>
+            <span class="checkbox">
+              <input class="ckeck-itself" id="check" type="checkbox">
+              <label class="ckeck-custom" for="check"><i class="fas fa-check"></i></label>
+            </span>
+            <input class="task-name" type="text" placeholder="Type Something Here...">
+          </h2>
+          <div class="task-mark">
+            <span class="task-mark-star invisible"><i class="far fa-star"></i></span>
+            <span class="task-mark-star task-mark-star-shiny "><i class="fas fa-star"></i></span>
+            <span class="task-mark-pen current-pen"><i class="fas fa-pen"></i></span>
           </div>
-          <div class="tag">
-            <div class="tag-wrap">
-              <span class="tag-unit tag-time">
-                <i class="far fa-calendar-alt"></i><time>4/17</time>
-              </span>
-              <span class="tag-unit tag-file">
-                <i class="far fa-file"></i>
-              </span>
-              <span class="tag-unit tag-comment">
-                <i class="far fa-comment-dots"></i>
-              </span>
-            </div>
+          <div class="task-tag">
+            <span class="tag-item tag-time">
+              <i class="far fa-calendar-alt"></i><time>4/17</time>
+            </span>
+            <span class="tag-item tag-file">
+              <i class="far fa-file"></i>
+            </span>
+            <span class="tag-item tag-comment">
+              <i class="far fa-comment-dots"></i>
+            </span>
           </div>
         </header>
-        <div class="task-edit">
+        <!-- <div class="task-edit">
           <section class="task-edit-deadline">
             <h3><i class="far fa-calendar-alt"></i>Deadline</h3>
             <form action="">
@@ -68,7 +73,7 @@
             <button class="btn-cancel"><i class="fas fa-times"></i>Cancel</button>
             <button class="btn-save"><i class="fas fa-plus"></i>Save</button>
           </div>
-        </div>
+        </div> -->
       </section>
       <p class="task-count"><span>0</span> task left</p>
     </div>
