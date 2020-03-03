@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev-css": "node-sass -r --source-comments scss/ -o css/ && node-sass -wr --source-comments scss/ -o css/",
-    "build-css": "node-sass --output-style=compressed scss/style.scss  distribution/style.min.css",
+    "build-css": "node-sass --output-style=compressed scss/main.scss  dist/main.min.css",
     "server": "php -S localhost:8080",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

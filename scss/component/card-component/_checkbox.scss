@@ -16,7 +16,7 @@
 }
 
 //check-itself 的 id 值用 js 賦予新的值
-.check-itself:checked ~ .check-custom {
+.check-itself:checked + .check-custom {
   background: $royal-blue;
 }
 

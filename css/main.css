@@ -23,6 +23,41 @@ a {
 html {
   font-family: 'Roboto', 'sans-serif'; }
 
+/* line 1, scss/component/_add.scss */
+.add {
+  margin-bottom: 24px; }
+
+/* line 5, scss/component/_add.scss */
+.add-form {
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #C8C8C8;
+  padding: 5px;
+  font-size: 0; }
+  /* line 11, scss/component/_add.scss */
+  .add-form button, .add-form input, .add-form input::placeholder {
+    font-size: 14px;
+    font-weight: regular;
+    line-height: 1.6;
+    color: #E1E1E1; }
+  /* line 14, scss/component/_add.scss */
+  .add-form button {
+    display: inline-block;
+    vertical-align: middle;
+    background: inherit; }
+    /* line 18, scss/component/_add.scss */
+    .add-form button:active {
+      color: #C8C8C8; }
+  /* line 22, scss/component/_add.scss */
+  .add-form input {
+    display: inline-block;
+    vertical-align: middle; }
+
+@media all and (min-width: 768px) {
+  /* line 30, scss/component/_add.scss */
+  .add-form button, .add-form input, .add-form input::placeholder {
+    font-size: 24px; } }
+
 /* line 1, scss/component/_card.scss */
 .task {
   background: #F2F2F2;
@@ -111,11 +146,11 @@ html {
   display: inline-block; }
 
 /* line 4, scss/component/card-component/_checkbox.scss */
-.ckeck-itself {
+.check-itself {
   display: none; }
 
 /* line 7, scss/component/card-component/_checkbox.scss */
-.ckeck-custom {
+.check-custom {
   display: inline-block;
   vertical-align: middle;
   background: #fff;
@@ -125,13 +160,13 @@ html {
   font-size: 12px;
   color: #fff; }
 
-/* line 17, scss/component/card-component/_checkbox.scss */
-.ckeck-itself:checked ~ .ckeck-custom {
+/* line 19, scss/component/card-component/_checkbox.scss */
+.check-itself:checked ~ .check-custom {
   background: #4A90E2; }
 
 @media all and (min-width: 768px) {
-  /* line 22, scss/component/card-component/_checkbox.scss */
-  .ckeck-custom {
+  /* line 24, scss/component/card-component/_checkbox.scss */
+  .check-custom {
     font-size: 18px;
     margin-right: 5px; } }
 
@@ -260,6 +295,19 @@ html {
     .task-form-item input, .task-form-item textarea {
       font-size: 14px; } }
 
+/* line 1, scss/component/_counter.scss */
+.task-counter {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #C8C8C8;
+  font-style: italic; }
+
+@media all and (min-width: 768px) {
+  /* line 7, scss/component/_counter.scss */
+  .task-counter {
+    font-size: 24px; } }
+
 /* line 1, scss/layout/_substrate.scss */
 body {
   background: #E1E1E1; }
@@ -280,9 +328,9 @@ body {
 /* line 6, scss/layout/_header.scss */
 .label-link {
   text-align: center;
-  flex: 0 0 25%;
+  flex: 0 0 28%;
   margin: 0 2%;
-  padding: 20px 0;
+  padding: 15px 0;
   font-size: 14px;
   font-weight: regular;
   line-height: 1.4;
@@ -298,37 +346,7 @@ body {
   .body-header {
     padding: 0 20%; } }
 
-/* line 1, scss/layout/_in-progress.scss */
-.add {
-  margin-bottom: 24px; }
-
-/* line 5, scss/layout/_in-progress.scss */
-.add-form {
-  background: #fff;
-  border-radius: 3px;
-  border: 1px solid #C8C8C8;
-  padding: 5px;
-  font-size: 0; }
-  /* line 11, scss/layout/_in-progress.scss */
-  .add-form button, .add-form input::placeholder {
-    font-size: 14px;
-    font-weight: regular;
-    line-height: 1.6;
-    color: #E1E1E1; }
-  /* line 14, scss/layout/_in-progress.scss */
-  .add-form button {
-    display: inline-block;
-    vertical-align: middle;
-    background: inherit; }
-    /* line 18, scss/layout/_in-progress.scss */
-    .add-form button:active {
-      color: #C8C8C8; }
-  /* line 22, scss/layout/_in-progress.scss */
-  .add-form input {
-    display: inline-block;
-    vertical-align: middle; }
-
-@media all and (min-width: 992px) {
-  /* line 30, scss/layout/_in-progress.scss */
-  .add-form button, .add-form input, .add-form input::placeholder {
+@media all and (min-width: 768px) {
+  /* line 25, scss/layout/_header.scss */
+  .label-link {
     font-size: 24px; } }
