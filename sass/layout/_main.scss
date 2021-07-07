@@ -1,0 +1,11 @@
+@use '../component/add-task';
+@use '../component/event_add';
+@use '../component/button';
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 1rem;
+}

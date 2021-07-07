@@ -1,0 +1,38 @@
+@use '../abstract/color';
+@use '../abstract/typography';
+@use '../abstract/breakpoint' as *;
+
+%blue-button {
+    background: color.$color-blue100;
+    color: color.$color-white;
+}
+
+%white-button {
+    background: color.$color-white;
+    color: color.$color-danger;
+}
+
+.add_task_button,
+.save_task_button {
+    @extend %blue-button;
+    font-size: 14px;
+    width: 50%;
+    height: 50px;
+    @include desktop {
+        font-size: 24px;
+        width: 50%;
+        height: 60px;
+    }
+}
+
+.cancel_task_button {
+    @extend %white-button;
+    font-size: 14px;
+    width: 50%;
+    height: 50px;
+    @include desktop {
+        font-size: 24px;
+        width: 50%;
+        height: 60px;
+    }
+}

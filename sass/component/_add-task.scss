@@ -1,0 +1,36 @@
+@use '../abstract/color';
+@use '../abstract/breakpoint' as *;
+
+.add_task {
+    display: flex;
+    box-sizing: border-box;
+    width: 80%;
+    height: 65px;
+    padding: 0 1rem;
+    border: 2px solid color.$color-grey300;
+    border-radius: 5px;
+    gap: 10px;
+
+    justify-content: start;
+    align-items: center;
+
+    background: color.$color-white;
+    @include ipad {
+    }
+
+    @include desktop {
+        width: 620px;
+        height: 65px;
+        padding: 0 2rem;
+        gap: 10px;
+    }
+    span {
+        color: color.$color-grey200;
+    }
+    &_icon {
+        font-size: 30px;
+    }
+    &_caption {
+        font-size: 24px;
+    }
+}

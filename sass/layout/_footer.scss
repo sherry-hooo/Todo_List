@@ -1,0 +1,10 @@
+@use '../abstract/typography';
+@use '../abstract/color';
+
+footer {
+    p {
+        text-align: center;
+        color: color.$color-grey300;
+        @extend %title;
+    }
+}

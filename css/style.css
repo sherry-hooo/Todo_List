@@ -1,0 +1,277 @@
+body,
+a,
+p,
+hr,
+button,
+h2,
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  resize: none;
+}
+
+a,
+button {
+  background: none;
+}
+a:hover,
+button:hover {
+  font-style: none;
+}
+
+body {
+  margin: 0;
+}
+
+body {
+  background: #E1E1E1;
+}
+
+header {
+  display: flex;
+  padding: 12px 0;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  background: #4A90E2;
+}
+@media (min-width: 768px) {
+  header {
+    padding: 24px 100px;
+  }
+}
+@media (min-width: 1024px) {
+  header {
+    padding: 24px 180px;
+  }
+}
+header a {
+  flex: 1 1 auto;
+  height: 28px;
+  color: #00408B;
+  font-size: 16px;
+}
+header a:hover {
+  color: white;
+}
+@media (min-width: 768px) {
+  header a {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  header a {
+    width: 220px;
+    height: 28px;
+    font-size: 24px;
+  }
+}
+
+.add_task {
+  display: flex;
+  box-sizing: border-box;
+  width: 80%;
+  height: 65px;
+  padding: 0 1rem;
+  border: 2px solid #C8C8C8;
+  border-radius: 5px;
+  gap: 10px;
+  justify-content: start;
+  align-items: center;
+  background: #FFFFFF;
+}
+@media (min-width: 1024px) {
+  .add_task {
+    width: 620px;
+    height: 65px;
+    padding: 0 2rem;
+    gap: 10px;
+  }
+}
+.add_task span {
+  color: #E1E1E1;
+}
+.add_task_icon {
+  font-size: 30px;
+}
+.add_task_caption {
+  font-size: 24px;
+}
+
+footer p, .event_add > h2 button textarea::placeholder {
+  font-family: "Roboto Medium";
+  font-size: 24px;
+}
+
+.event_add form h3 label {
+  font-family: "Roboto Medium";
+  font-size: 20px;
+}
+
+.event_add {
+  width: 80%;
+  box-sizing: border-box;
+  border: 2px solid #C8C8C8;
+  border-radius: 5px 5px 0 0;
+  background: #F2F2F2;
+}
+@media (min-width: 1024px) {
+  .event_add {
+    width: 620px;
+  }
+}
+.event_add > h2 {
+  padding: 1.5rem 1rem;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #C8C8C8;
+  border-radius: 5px 5px 0 0;
+}
+@media (min-width: 1024px) {
+  .event_add > h2 {
+    padding: 1.5rem 2rem;
+  }
+}
+.event_add > h2 button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.event_add > h2 button input[type=checkbox] {
+  width: 24px;
+  height: 24px;
+}
+.event_add > h2 button textarea {
+  background: none;
+  flex: 1 1 auto;
+  height: 28px;
+  line-height: 28px;
+  padding-left: 1rem;
+}
+.event_add > h2 button textarea::placeholder {
+  color: black;
+}
+@media (min-width: 1024px) {
+  .event_add > h2 button textarea {
+    flex: 1 1 275px;
+  }
+}
+.event_add > h2 button i {
+  font-size: 24px;
+}
+.event_add > h2 button i + i {
+  margin-left: 20px;
+}
+
+.event_add form {
+  padding: 0 1rem;
+}
+@media (min-width: 1024px) {
+  .event_add form {
+    padding: 0 4.5rem;
+  }
+}
+.event_add form h3 {
+  margin-bottom: 8px;
+}
+.event_add form h3 label {
+  font-size: 20px;
+}
+.event_add form input {
+  box-sizing: border-box;
+  width: 48%;
+  height: 35px;
+  padding-left: 10px;
+}
+.event_add form input::placeholder {
+  color: #C8C8C8;
+}
+@media (min-width: 1024px) {
+  .event_add form input {
+    width: 162px;
+    padding-left: 20px;
+    margin-left: 20px;
+  }
+}
+.event_add form .attachment {
+  margin-left: 20px;
+  background: #C8C8C8;
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  color: white;
+  font-size: 24px;
+}
+.event_add form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 8px;
+  margin-bottom: 1rem;
+}
+.event_add form textarea::placeholder {
+  color: #C8C8C8;
+}
+@media (min-width: 1024px) {
+  .event_add form textarea {
+    width: 413px;
+    padding: 8px 16px;
+    margin: 0 0 20px 16px;
+  }
+}
+
+.add_task_button,
+.save_task_button {
+  background: #4A90E2;
+  color: #FFFFFF;
+}
+
+.cancel_task_button {
+  background: #FFFFFF;
+  color: #D0021B;
+}
+
+.add_task_button,
+.save_task_button {
+  font-size: 14px;
+  width: 50%;
+  height: 50px;
+}
+@media (min-width: 1024px) {
+  .add_task_button,
+.save_task_button {
+    font-size: 24px;
+    width: 50%;
+    height: 60px;
+  }
+}
+
+.cancel_task_button {
+  font-size: 14px;
+  width: 50%;
+  height: 50px;
+}
+@media (min-width: 1024px) {
+  .cancel_task_button {
+    font-size: 24px;
+    width: 50%;
+    height: 60px;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+footer p {
+  text-align: center;
+  color: #C8C8C8;
+}
+
+/*# sourceMappingURL=style.css.map */
