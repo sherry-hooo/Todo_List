@@ -1,0 +1,22 @@
+let get = (tag) => document.querySelector(tag)
+let getAll = (tag) => document.querySelectorAll(tag)
+let createTaskButton = get('.create_task_button')
+let createTaskArea = get('.create_task_area')
+let templateTask = get('.template_task')
+let addTaskButton = get('input.add_task_button')
+let listedTaskArea = get('.listed_task_area')
+let inputDate = get(`input[type=date]`)
+let star = get(`i[data-name=star]`)
+let pen = get(`i[data-name=pen]`)
+let showTaskCount = get('.task_count')
+let filters = get('header')
+let date = get('#date')
+let file = get('#file')
+let comment = get('#comment')
+
+export function toggleTask(task) {
+  console.log('只顯示header')
+  Array.from(task.children)
+    .filter((item) => item.className !== 'task_header')
+    .map((section) => (section.style.display = 'none'))
+}

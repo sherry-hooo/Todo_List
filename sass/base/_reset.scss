@@ -5,23 +5,26 @@ hr,
 button,
 h2,
 input,
-textarea {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style: none;
-    border: none;
-    resize: none; //去掉右下角小三角
+textarea,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  resize: none; //去掉右下角小三角
 }
 
 a,
-button {
-    background: none;
-    &:hover {
-        font-style: none;
-    }
-}
-
-body {
-    margin: 0;
+button,
+input,
+textarea {
+  background: none;
+  &:hover,
+  &:focus {
+    font-style: none;
+    border: none;
+    outline: none;
+  }
 }
