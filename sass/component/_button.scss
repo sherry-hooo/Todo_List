@@ -1,38 +1,101 @@
 @use '../abstract/color';
 @use '../abstract/typography';
-@use '../abstract/breakpoint' as *;
+@use '../abstract/breakpoint';
 
-%blue-button {
-    background: color.$color-blue100;
-    color: color.$color-white;
+// extend 按鈕樣式
+%confirm-button {
+  background: color.$color-blue100;
+  color: color.$color-white;
+  font-size: 24px;
+  width: 50%;
+  height: 60px;
+  box-sizing: border-box;
 }
 
-%white-button {
-    background: color.$color-white;
-    color: color.$color-danger;
+%cancel-button {
+  background: color.$color-white;
+  color: color.$color-danger;
+  font-size: 24px;
+  width: 50%;
+  height: 60px;
+  box-sizing: border-box;
 }
 
-.add_task_button,
+// 新增 & 儲存按鈕
+.add_task_button {
+  @extend %confirm-button;
+  border-radius: 0 0 5px 0;
+}
+
 .save_task_button {
-    @extend %blue-button;
-    font-size: 14px;
-    width: 50%;
-    height: 50px;
-    @include desktop {
-        font-size: 24px;
-        width: 50%;
-        height: 60px;
-    }
+  @extend %confirm-button;
+  border-radius: 0 0 5px 0;
 }
 
+// 刪除按鈕
 .cancel_task_button {
-    @extend %white-button;
-    font-size: 14px;
-    width: 50%;
-    height: 50px;
-    @include desktop {
-        font-size: 24px;
-        width: 50%;
-        height: 60px;
-    }
+  @extend %cancel-button;
+  border-radius: 0 0 0 5px;
+}
+
+// 篩選按鈕
+.filteredTask_btn {
+  width: 220px;
+  height: 76px;
+  padding: 23px 0 25px 0;
+  font-size: 24px;
+  color: color.$color-blue200;
+  &:hover,
+  &:focus {
+    color: white;
+  }
+}
+
+
+.focus {
+  width: 220px;
+  height: 76px;
+  padding: 23px 0 25px 0;
+  font-size: 24px;
+  color: color.$color-blue200;
+  position: relative;
+  &:hover,
+  &:focus {
+    color: white;
+  }
+
+  &::after {
+    display: block;
+    content: '';
+    background-color: color.$color-blue200;
+    width: 72%;
+    height: 5px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+  }
+}
+
+// 新增 task 按鈕
+.create_task_button {
+  box-sizing: border-box;
+  width: 620px;
+  height: 65px;
+  padding: 0 2rem;
+  gap: 10px;
+  border: 2px solid color.$color-grey300;
+  border-radius: 5px;
+  font-size: 24px;
+  color: color.$color-grey200;
+  background: color.$color-white;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  &:hover {
+    color: color.$color-grey300;
+    box-shadow: -2px 2px 3px color.$color-grey300;
+  }
 }
