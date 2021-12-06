@@ -81,7 +81,7 @@
 // 新增 task 按鈕
 .create_task_button {
   box-sizing: border-box;
-  width: 620px;
+  width: 100%;
   height: 65px;
   padding: 0 2rem;
   gap: 10px;
@@ -97,5 +97,9 @@
   &:hover {
     color: color.$color-grey300;
     box-shadow: -2px 2px 3px color.$color-grey300;
+  }
+
+  @include breakpoint.tablet {
+    width: 620px;
   }
 }
