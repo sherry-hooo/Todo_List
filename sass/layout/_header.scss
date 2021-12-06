@@ -1,47 +1,44 @@
 @use '../abstract/color';
-@use '../abstract/breakpoint' as *;
+@use '../abstract/breakpoint';
 
 header {
-    display: flex;
-    padding: 12px 0;
-    position: relative;
-    justify-content: center;
-    text-align: center;
-    background: color.$color-blue100;
-    @include ipad {
-        padding: 24px 100px;
-    }
-    @include desktop {
-        padding: 24px 180px;
-    }
-    a {
-        flex: 1 1 auto;
-        height: 28px;
-        color: color.$color-blue200;
-        font-size: 16px;
-        &:hover {
-            color: white;
-        }
-        @include ipad {
-            font-size: 24px;
-        }
-        @include desktop {
-            width: 220px;
-            height: 28px;
-            font-size: 24px;
-        }
-    }
-    // hr {
-    //     width: 20%;
-    //     height: 2px;
-    //     background-color: color.$color-blue200;
-    //     position: absolute;
-    //     bottom: 0;
-    //     left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: color.$color-blue100;
 
-    //     @include desktop {
-    //         width: 160px;
-    //         left: 212px;
-    //     }
-    // }
+  .filteredTask_display {
+    width: 220px;
+    height: 76px;
+    line-height: 76px;
+    font-size: 24px;
+    color: color.$color-blue200;
+  }
+  .toggle_btn[data-toggle=true] + div {
+    display: flex;
+    align-items: center;
+  }
+  .filteredTask_btn_group {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background: color.$color-blue100;
+  }
+  @include breakpoint.tablet {
+    flex-wrap: wrap;
+    .filteredTask_btn_group {
+      display: block;
+      position: unset;
+    }
+    .filteredTask_display {
+      display: none;
+    }
+    .toggle_btn {
+      display: none;
+    }
+}
 }
