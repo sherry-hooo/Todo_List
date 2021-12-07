@@ -1,0 +1,103 @@
+@use "../abstract/color";
+@use "../abstract/typography" as ty;
+@use "../abstract/breakpoint";
+
+
+%task-input {
+  @extend %paragraph;
+  box-sizing: border-box;
+  background-color: color.$color-white;
+
+  &::placeholder {
+    @extend %placeholder;
+  }
+}
+
+//input;
+input {
+  cursor: pointer;
+}
+
+// 勾選 input
+input[type="checkbox"]:checked {
+  & + input[type="text"].task_title {
+    text-decoration: line-through;
+    color: color.$color-grey300;
+    &::placeholder {
+      color: color.$color-grey300;
+    }
+  }
+}
+
+input[type="text"].task_title {
+  @extend %placeholder;
+  color: color.$color-black;
+  &::placeholder {
+    color: color.$color-black;
+  }
+  @include breakpoint.tablet {
+    font-size: 24px;
+  }
+}
+
+// input = file
+
+input [type="file" i] {
+  &::-webkit-file-upload-button {
+    display: none;
+  }
+  span [aria-hidden="true"] {
+    display: none;
+  }
+}
+
+.uploadFile {
+  display: block;
+  // width: 32px;
+  // height: 32px;
+  // background-color: color.$color-grey300;
+  cursor: pointer;
+  span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background-color: color.$color-grey300;
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 1px;
+      background-color: color.$color-white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 10px;
+      height: 1px;
+      background-color: color.$color-white;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transform: rotate(90deg);
+    }
+  }
+  input[type="file" i] {
+    // opacity: 0;
+    // width: 32px;
+    // height: 32px;
+    &::-webkit-file-upload-button {
+      display: none;
+    }
+  }
+}

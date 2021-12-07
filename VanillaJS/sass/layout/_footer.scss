@@ -1,0 +1,8 @@
+@use '../abstract/typography';
+@use '../abstract/color';
+
+footer {
+  @extend %state;
+  color: color.$color-grey300;
+  text-align: center;
+}

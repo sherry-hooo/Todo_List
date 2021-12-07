@@ -1,0 +1,153 @@
+@use "../abstract/color";
+@use "../abstract/typography";
+@use "../abstract/breakpoint";
+@use "../component/input";
+
+// 變數設置
+$date_time_width: 162px;
+$date_time_height: 35px;
+
+$textarea_height: 120px;
+
+// 調整版面
+
+//-待修改selector
+.listed_task_area .task .disappear {
+  display: none;
+}
+.template_task {
+  display: none;
+}
+
+.yellow_bg {
+  background-color: #fff2dc;
+}
+
+.dragging {
+  transform: scale(1.1) !important;
+}
+
+//-
+
+.task {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 5px;
+  background: color.$color-grey100;
+
+  @include breakpoint.tablet {
+    width: 620px;
+  }
+
+  .task_header {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px 5px 0 0;
+
+    input[type="checkbox"] {
+      min-width: 18px;
+      height: 18px;
+    }
+    input[type="text"].task_title {
+      // flex: 1 1 auto;
+      // margin-left: 16px;
+      width: 150px;
+      padding: 10px;
+    }
+    i + i {
+      // margin-left: 20px;
+    }
+
+    .content_icon {
+      flex: 1 0 80%;
+      padding: 5px;
+      margin-left: 40px;
+      color: color.$color-grey400;
+    }
+
+    @include breakpoint.tablet {
+      flex-wrap: wrap;
+      padding: 10px 32px;
+      input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  .task_body {
+    height: 383px; //待改
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-top: 2px solid color.$color-grey300;
+
+    @include breakpoint.tablet {
+      padding: 24px 76px;
+    }
+
+    fieldset legend {
+      margin-bottom: 15px;
+      @extend %subtitle;
+      i {
+        margin-right: 10px;
+      }
+
+      @include breakpoint.tablet {
+        & + * {
+          margin-left: 40px;
+        }
+      }
+    }
+
+    textarea {
+      width: 100%;
+      height: $textarea_height;
+      padding: 16px 8px;
+      resize: none;
+      @extend %task-input;
+
+      @include breakpoint.tablet {
+        width: 445px;
+      }
+    }
+  }
+  .task_footer {
+    font-size: 0;
+  }
+}
+
+label[for="date"],
+label[for="time"] {
+  @extend %task-input;
+  box-sizing: border-box;
+  padding-left: 16px;
+  text-align: center;
+  display: inline-block;
+  width: $date_time_width;
+  height: $date_time_height;
+  input {
+    // opacity: 0;
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @extend %placeholder;
+
+    &::-webkit-calendar-picker-indicator {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      position: absolute;
+      opacity: 0;
+    }
+  }
+}
+
+label + label {
+  margin-left: 10px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title></title>
+
+  <!-- fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+
+  <!-- my css-->
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header>
+    <p class="filteredTask_display">My Tasks</p>
+    <i class="fas fa-caret-down toggle_btn" data-toggle=false></i>
+    <div class="filteredTask_btn_group">
+      <button class='filteredTask_btn focus' name='myTasks' autofocus>My Tasks</button>
+      <button class='filteredTask_btn' name='progress'>In Progress</button>
+      <button class='filteredTask_btn' name='completed'>Completed</button>
+    </div>
+  </header>
+
+  <main>
+    <section class='create_task_area'>
+      <button name='create' class="create_task_button" aria-expanded='false' aria-controls="template">
+        <span class="plus_icon">&plus;</span>
+        Add Task
+      </button>
+      <form class="task template_task">
+        <div class='task_header'>
+          <input type="checkbox" name='check'>
+          <input class='task_title' type="text" name='title' placeholder="Type Something Here..." maxlength="15">
+          <i class="fa-fw far fa-star star" data-name='star' data-on='false'></i>
+          <i class="fa-fw far fa-edit pen_fill" data-name='pen' data-on='false'></i>
+          <div class="content_icon disappear"></div>
+        </div>
+
+        <div class='task_body'>
+          <fieldset>
+            <legend><i class="far fa-fw fa-calendar-alt"></i>Deadline</legend>
+            <label for="date">
+              <input type="date" value="" id='date' name='date'>
+            </label>
+            <label for="time">
+              <input type="time" value="" id='time' name='time'>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend><i class="far fa-fw fa-file"></i>File</legend>
+            <label class='uploadFile' for="file">
+              <span></span>
+              <input type="file" id='file' name='file'>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend><i class="far fa-fw fa-comment-dots"></i>Comment</legend>
+            <textarea name="comment" id="comment" rows="10" cols='15' placeholder="Type your memo here..."></textarea>
+          </fieldset>
+        </div>
+        <div class="task_footer">
+          <input name='cancel' class="cancel_task_button" type="reset" value='&times; Cancel'>
+          <input name='add' class="add_task_button" type="submit" value="&plus; Add Task">
+        </div>
+      </form>
+
+    </section>
+    <section class='listed_task_area' ondragover="event.preventDefault()"></section>
+
+
+    </section>
+  </main>
+  <footer>
+    <em class='task_count'>0 tasks left</em>
+  </footer>
+  <!-- <script type='module' src='./javaScript/template.js'></script> -->
+  <script type='module' src='./javaScript/Script.js'></script>
+</body>
+
+</html>

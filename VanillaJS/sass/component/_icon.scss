@@ -1,0 +1,30 @@
+@use "../abstract/color";
+@use "../abstract/typography";
+@use "../abstract/breakpoint";
+
+i {
+  font-size: 18px;
+}
+
+i[data-name="star"],
+i[data-name="pen"] {
+  font-size: 18px;
+
+  @include breakpoint.tablet {
+    font-size: 24px;
+  }
+}
+
+.star_fill {
+  font-weight: 900;
+  color: color.$color-yellow400;
+}
+
+.pen_fill {
+  font-weight: 900;
+  color: color.$color-blue100;
+}
+
+.plus_icon {
+  font-size: 36px;
+}

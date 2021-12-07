@@ -1,0 +1,38 @@
+@use "../component/task";
+@use "../component/button";
+@use "../component/icon";
+@use "../component/input";
+@use "../abstract/breakpoint";
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1.5rem;
+
+  section {
+    width: 100%;
+    + section {
+      margin-top: 20px;
+    }
+  }
+
+  // 樣板陰影
+  .template_task_area {
+    box-shadow: 0 2px 3px lightgray;
+  }
+
+  .listed_task_area {
+    display: flex;
+    flex-direction: column;
+    & > form + form {
+      margin-top: 10px;
+    }
+  }
+
+  @include breakpoint.tablet {
+    section {
+      width: fit-content;
+    }
+  }
+}

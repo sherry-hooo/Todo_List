@@ -1,0 +1,30 @@
+body,
+a,
+p,
+hr,
+button,
+h2,
+input,
+textarea,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+  resize: none; //去掉右下角小三角
+}
+
+a,
+button,
+input,
+textarea {
+  background: none;
+  &:hover,
+  &:focus {
+    font-style: none;
+    border: none;
+    outline: none;
+  }
+}
