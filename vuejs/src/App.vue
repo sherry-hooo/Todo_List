@@ -1,30 +1,136 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <header>
+    <nav>
+      <router-link to="/" active @click="toggleMenu" class="myTask"
+        >My Tasks</router-link
+      >
+      <router-link to="/inProgress" @click="toggleMenu" class="inProgress"
+        >In Progress</router-link
+      >
+      <router-link to="/completed" @click="toggleMenu" class="completed"
+        >Completed</router-link
+      >
+      <i class="fas fa-caret-down toggle_btn" @click="toggleMenu"></i>
+    </nav>
+  </header>
+  <main>
+    <router-view />
+  </main>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    toggleMenu(event) {
+      let header = document.querySelector("header");
+      header.classList.toggle("openMenu");
+      console.log(event.target);
+      console.log(this);
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-family: Roboto-Medium;
 }
 
-#nav {
-  padding: 30px;
+header {
+  background: global.$light-blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.openMenu {
+  nav > a {
+    display: block;
+  }
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    display: none;
+    color: global.$dark-blue;
+    // font-size: 1rem;
+    line-height: 28px;
+    width: 220px;
+    padding: 23px 0;
+    text-align: center;
+    &:hover {
+      color: white;
     }
+    &.router-link-exact-active {
+      display: block;
+      color: global.$white;
+      order: 0;
+      position: relative;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: calc(100% - 5px);
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        margin: auto;
+        background: global.$dark-blue;
+      }
+    }
+  }
+  .completed {
+    order: 3;
+  }
+  .myTask {
+    order: 1;
+  }
+  .inProgress {
+    order: 2;
+  }
+  .toggle_btn {
+    align-self: flex-start;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    right: -25px;
+  }
+  @include global.tablet {
+    flex-direction: row;
+    position: unset;
+    a {
+      display: block;
+      padding: 23px 0;
+
+      &.router-link-exact-active {
+        order: unset;
+      }
+    }
+    .toggle_btn {
+      display: none;
+    }
+    .completed,
+    .myTask,
+    .inProgress {
+      order: unset;
+    }
+  }
+}
+
+main {
+  padding: 24px 5px;
+  background: global.$light-grey;
+
+  @include global.mobile {
+    padding: 24px;
   }
 }
 </style>
