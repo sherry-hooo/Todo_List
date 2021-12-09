@@ -7,7 +7,6 @@
       @editTask="editTask"
     ></Task>
   </section>
-  <!-- <pre>{{ allProgressTasks }}</pre> -->
 </template>
 
 <script>
@@ -21,8 +20,19 @@ export default {
     };
   },
   methods: {
-    editTask(data) {
-      console.log(data);
+    editTask(modifiedContent) {
+      let newAllTaskData = this.allTaskData.map((task) => {
+        if (task.id === modifiedContent.id) {
+          task = modifiedContent;
+        }
+        return task;
+      });
+      this.allTaskData = newAllTaskData;
+      this.storageData("taskList", newAllTaskData);
+    },
+    storageData(dataName, data) {
+      // 存local
+      localStorage.setItem(dataName, JSON.stringify(data));
     },
   },
   computed: {
