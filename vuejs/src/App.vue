@@ -13,23 +13,18 @@
       <i class="fas fa-caret-down toggle_btn" @click="toggleMenu"></i>
     </nav>
   </header>
-  <main>
-    <router-view />
-  </main>
+  <router-view />
 </template>
 
 <script>
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   methods: {
-    toggleMenu(event) {
+    toggleMenu() {
       let header = document.querySelector("header");
       header.classList.toggle("openMenu");
-      console.log(event.target);
-      console.log(this);
     },
   },
 };
@@ -135,5 +130,9 @@ main {
     padding: 24px;
   }
 }
-
+footer {
+  font-family: Roboto-Italic;
+  color: global.$medium-grey;
+  text-align: center;
+}
 </style>
