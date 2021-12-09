@@ -1,0 +1,11 @@
+@use "./breakpoint";
+
+:root {
+  font-size: 18px;
+  @include breakpoint.tablet {
+    font-size: 20px;
+  }
+  @include breakpoint.desktop {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,21 @@
+@use '../abstract/color';
+
+.addTask_button {
+  box-sizing: border-box;
+  padding: 0 1rem;
+  gap: 10px;
+  border: 2px solid color.$medium-grey;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: color.$light-grey;
+  background: color.$white;
+
+  display: flex;
+  text-align: start;
+  justify-content: start;
+  align-items: center;
+  &:hover {
+    color: color.$medium-grey;
+    box-shadow: -2px 2px 3px color.$medium-grey;
+  }
+}
