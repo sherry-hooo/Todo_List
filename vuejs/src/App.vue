@@ -21,7 +21,8 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
     toggleMenu(event) {
@@ -37,6 +38,8 @@ export default {
 <style lang="scss">
 #app {
   font-family: Roboto-Medium;
+  background: global.$light-grey;
+  min-height: 100vh;
 }
 
 header {
@@ -127,10 +130,10 @@ nav {
 
 main {
   padding: 24px 5px;
-  background: global.$light-grey;
 
   @include global.mobile {
     padding: 24px;
   }
 }
+
 </style>
