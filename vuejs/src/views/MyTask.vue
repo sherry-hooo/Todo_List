@@ -1,30 +1,38 @@
 <template>
-  <button
-    class="addTask_button"
-    @click="openTemplate = !openTemplate"
-    v-if="!openTemplate"
-  >
-    &plus; Add Task
-  </button>
-  <Template
-    v-if="openTemplate"
-    @templateAction="getTemplateAction"
-    @createTask="getNewTaskData"
-  >
-  </Template>
-  <section>
-    <Task
-      v-for="task in allTaskData"
-      :key="task.id"
-      :task="task"
-      @editTask="editTask"
-    ></Task>
-  </section>
+  <main>
+    <button
+      class="addTask_button"
+      @click="openTemplate = !openTemplate"
+      v-if="!openTemplate"
+    >
+      &plus; Add Task
+    </button>
+    <Template
+      v-if="openTemplate"
+      @templateAction="getTemplateAction"
+      @createTask="getNewTaskData"
+    >
+    </Template>
+    <section>
+      <Task
+        v-for="task in allTaskData"
+        :key="task.id"
+        :task="task"
+        @editTask="editTask"
+      ></Task>
+    </section>
+  </main>
+  <footer>
+    <p>
+      {{ leftTasksCount }} tasks
+      <span>{{ $router.name === "Completed" ? "completed" : "left" }}</span>
+    </p>
+  </footer>
 </template>
 
 <script>
 import Template from "@/components/Template.vue";
-import Task from "../components/Task.vue";
+import Task from "@/components/Task.vue";
 
 export default {
   name: "MyTask",
@@ -63,6 +71,11 @@ export default {
         return task;
       });
       this.storageData("taskList", newAllTaskData);
+    },
+  },
+  computed: {
+    leftTasksCount() {
+      return this.allTaskData.filter((task) => task.taskChecked != true).length;
     },
   },
 };

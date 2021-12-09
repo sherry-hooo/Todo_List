@@ -1,12 +1,20 @@
 <template>
-  <section v-if="allTaskData">
-    <Task
-      v-for="task in allProgressTasks"
-      :key="task.id"
-      :task="task"
-      @editTask="editTask"
-    ></Task>
-  </section>
+  <main>
+    <section v-if="allTaskData">
+      <Task
+        v-for="task in allProgressTasks"
+        :key="task.id"
+        :task="task"
+        @editTask="editTask"
+      ></Task>
+    </section>
+  </main>
+  <footer>
+    <p>
+      {{ allProgressTasks.length }} tasks
+      <span>{{ $router.name === "Completed" ? "completed" : "left" }}</span>
+    </p>
+  </footer>
 </template>
 
 <script>
