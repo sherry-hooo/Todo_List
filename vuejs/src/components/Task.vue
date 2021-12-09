@@ -1,6 +1,7 @@
 <template>
-  <form class="form">
+  <form class="form" @wheel="wheelEvent">
     <div class="form_header" :class="{ header_fill: taskStar }">
+      <!-- check -->
       <label :for="`check-${task.id}`" class="checkbox_icon">
         <input
           v-model="taskChecked"
@@ -10,6 +11,7 @@
         />
         <span></span>
       </label>
+      <!-- title -->
       <input
         v-model="taskTitle"
         :class="{ complete_task: taskChecked }"
@@ -17,8 +19,8 @@
         type="text"
         placeholder="Type Something Here..."
       />
+      <!-- star  -->
       <label :for="`star-${task.id}`" class="star_icon">
-        <!-- star click 事件 -->
         <input
           v-model="taskStar"
           @click="setImportant"
@@ -27,16 +29,35 @@
         />
         <i class="fa-fw far fa-star"></i>
       </label>
+      <!--  edit -->
       <label :for="`pen-${task.id}`" class="pen_icon">
-        <!--  v-model -->
         <input
           v-model="taskPen"
           @click="editTask"
           type="checkbox"
           :id="`pen-${task.id}`"
         />
-        <i class="fa-fw far fa-edit"></i>
+        <i class="fas fa-pencil-alt"></i>
+        <!-- <i class="fa-fw far fa-edit"></i> -->
       </label>
+      <!-- 刪除 -->
+      <label :for="`trash-${task.id}`" class="trash_icon">
+        <input
+          v-model="taskDeleted"
+          @click="deleteTask"
+          type="checkbox"
+          name="trash"
+          :id="`trash-${task.id}`"
+        />
+        <i class="far fa-trash-alt fa-fw"></i>
+      </label>
+      <!-- 縮圖 -->
+      <div v-if="!taskChecked" class="content_thumbnails">
+        <i v-if="taskDate" class="far fa-calendar-alt fa-fw"></i>
+        <span v-if="taskDate">{{ briefDate }}</span>
+        <i v-if="taskFile" class="far fa-file fa-fw"></i>
+        <i v-if="taskComment" class="far fa-comment-dots"></i>
+      </div>
     </div>
     <div class="form_body" v-if="taskPen === true">
       <fieldset class="column_deadline">
@@ -71,7 +92,12 @@
 
 <script>
 export default {
-  props: ["task", "key"],
+  props: {
+    task: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
       taskTitle: this.task.taskTitle,
@@ -82,6 +108,7 @@ export default {
       taskStar: this.task.taskStar,
       taskPen: this.task.taskPen,
       taskChecked: this.task.taskChecked,
+      taskDeleted: "",
     };
   },
   computed: {
@@ -91,6 +118,7 @@ export default {
         taskStar: this.taskStar,
         taskPen: this.taskPen,
         taskChecked: this.taskChecked,
+        taskDeleted: this.taskDeleted,
         taskTitle: this.taskTitle,
         taskDate: this.taskDate,
         taskTime: this.taskTime,
@@ -98,6 +126,9 @@ export default {
         taskComment: this.taskComment,
       };
       return task;
+    },
+    briefDate() {
+      return this.taskDate.slice(5).replace("-", "/");
     },
   },
   methods: {
@@ -110,10 +141,9 @@ export default {
       event.preventDefault();
       this.taskPen = false;
       this.$emit("editTask", this.taskData);
-      console.log(this.task.id);
     },
-    getAttachment(event) {
-      console.log(event);
+    getAttachment() {
+      //file
     },
     setImportant(event) {
       //置頂action
@@ -129,231 +159,48 @@ export default {
       this.taskChecked = event.target.checked;
       this.$emit("editTask", this.taskData);
     },
+    deleteTask(event) {
+      this.taskDeleted = event.target.checked;
+      this.$emit("editTask", this.taskData);
+    },
+    wheelEvent(event) {
+      console.log(event);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@use "@/assets/scss/component/_form.scss";
 * {
   // outline: 1px solid green;
 }
-.form {
-  background: global.$pale-grey;
-  width: 300px;
-  margin: 0 auto 8px;
-  border-radius: 5px 5px 0 0;
-  box-shadow: 0 4px 4px global.$medium-grey;
 
-  @include global.mobile {
-    width: 500px;
-  }
-  @include global.tablet {
-    width: 620px;
-  }
-
-  .header_fill {
-    background: global.$light-yellow;
-  }
-  &_header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    @include global.tablet {
-      padding: 28px 32px;
-    }
-    > * + * {
-      margin-left: 10px;
-      @include global.tablet {
-        margin-left: 20px;
-      }
-    }
-    & > label {
-      font-size: 0;
-    }
-    input[type="checkbox"] {
-      display: none;
-    }
-    input[type="text"] {
-      flex: 1 2 150px;
-      font-size: 16px;
-
-      &::placeholder {
-        color: black;
-      }
-      @include global.tablet {
-        font-size: 20px;
-      }
-    }
-    .checkbox_icon > span {
-      display: inline-block;
-      min-width: 20px;
-      height: 20px;
-      line-height: 20px;
-      background: global.$white;
-      position: relative;
-      text-align: center;
-      border-radius: 2px;
-
-      &:hover::after {
-        content: "\2713";
-        font-size: 16px;
-        color: global.$light-grey;
-        vertical-align: middle;
-      }
-
-      @include global.tablet {
-        min-width: 24px;
-        height: 24px;
-        line-height: 24px;
-      }
-    }
-    i {
-      font-size: 20px;
-      transition: all 0.2s ease-in-out;
-
-      @include global.tablet {
-        font-size: 24px;
-      }
-    }
-  }
-  &_body {
-    border-top: 2px solid global.$medium-grey;
-    padding: 1rem;
-    @include global.tablet {
-      padding: 24px 72px;
-    }
-    fieldset {
-      display: flex;
-      & + fieldset {
-        margin-top: 1rem;
-      }
-    }
-    legend {
-      margin-bottom: 8px;
-      & > i {
-        margin-right: 1rem;
-      }
-      & + * {
-        margin-left: 1rem;
-      }
-    }
-  }
-  &_footer {
-    font-size: 0;
-    button {
-      width: 50%;
-      padding: 16px 0;
-    }
-    .cancel_button {
-      background: global.$white;
-      color: global.$red;
-      border-radius: 0 0 0 5px;
-    }
-    .save_button {
-      background: global.$light-blue;
-      color: white;
-      border-radius: 0 0 5px 0;
-    }
-  }
-}
-
-.column_deadline {
-  input {
-    background: global.$white;
-    color: global.$medium-grey;
-  }
-  input[type="date" i]::-webkit-calendar-picker-indicator,
-  input[type="time" i]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    margin: 0;
-    width: 100%;
-    position: absolute;
-  }
-}
-.column_file {
-  label[for="attachment"] {
-    display: flex;
-    span {
-      width: 32px;
-      height: 32px;
-      background: global.$medium-grey;
-      border-radius: 2px;
-      text-align: center;
-      position: relative;
-      &:before {
-        content: "";
-        display: inline-block;
-        height: 1px;
-        width: 16px;
-        color: white;
-        background: #ffffff;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        margin: auto;
-      }
-      &:after {
-        content: "";
-        display: inline-block;
-        height: 1px;
-        width: 16px;
-        transform: rotate(90deg);
-        color: white;
-        background: #ffffff;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        margin: auto;
-      }
-    }
-    input[type="file"] {
-      width: 100px;
-    }
-    input[type="file" i]::-webkit-file-upload-button {
-      display: none;
-    }
-  }
-}
-.column_comment {
-  textarea {
-    background: global.$white;
-    width: 80%;
-    height: 120px;
-    padding: 1rem;
-  }
-}
-
-// 點擊 input 讓 icon 變亮
-.star_icon > input[type="checkbox"]:checked + i {
-  color: global.$dark-yellow;
-  font-weight: 900;
-  transition: all 0.2s ease-in-out;
-}
-
-.pen_icon > input[type="checkbox"]:checked + i {
-  color: global.$light-blue;
-  font-weight: 900;
-  transition: all 0.2s ease-in-out;
-}
-
-// checkbox 打勾效果
-.checkbox_icon > input[type="checkbox"]:checked + span {
-  box-shadow: inset 0 0 0 15px global.$light-blue;
-  transition: all 0.3s ease-in-out;
-  &::after {
-    content: "\2713";
-    font-size: 16px;
-    color: white;
-  }
+// header 填色
+.header_fill {
+  background: global.$light-yellow;
 }
 
 // 刪除線
 .complete_task {
   text-decoration: line-through;
   color: global.$medium-grey;
+}
+
+// 縮圖區
+.content_thumbnails {
+  flex: 1 1 100%;
+  margin: 8px 0 0 28px;
+  color: global.$dark-grey;
+  font-size: 14px;
+  span {
+    margin-left: 5px;
+  }
+  * + i {
+    margin-left: 8px;
+  }
+  i {
+    font-size: 14px;
+  }
 }
 </style>
