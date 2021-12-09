@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @wheel="wheelEvent">
+  <form class="form" @wheel="wheelEvent" :class="{ dragging: !taskChecked }">
     <div class="form_header" :class="{ header_fill: taskStar }">
       <!-- check -->
       <label :for="`check-${task.id}`" class="checkbox_icon">
@@ -24,6 +24,7 @@
         <input
           v-model="taskStar"
           @click="setImportant"
+          :disabled="taskChecked"
           type="checkbox"
           :id="`star-${task.id}`"
         />
@@ -64,28 +65,45 @@
         <legend><i class="far fa-fw fa-calendar-alt"></i>Deadline</legend>
         <div>
           <label for="date">
-            <input v-model="taskDate" type="date" id="date" />
+            <input
+              :disabled="taskChecked"
+              v-model="taskDate"
+              type="date"
+              id="date"
+            />
           </label>
           <label for="time">
-            <input v-model="taskTime" type="time" id="time" />
+            <input
+              :disabled="taskChecked"
+              v-model="taskTime"
+              type="time"
+              id="time"
+            />
           </label>
         </div>
       </fieldset>
       <fieldset class="column_file">
         <legend><i class="far fa-fw fa-file"></i>File</legend>
         <label for="attachment" @change="getAttachment">
-          <input type="file" id="attachment" />
+          <input :disabled="taskChecked" type="file" id="attachment" />
           <span></span>
         </label>
       </fieldset>
       <fieldset class="column_comment">
         <legend><i class="far fa-fw fa-comment-dots"></i>Comment</legend>
-        <textarea v-model="taskComment" name="" id=""></textarea>
+        <textarea
+          :disabled="taskChecked"
+          v-model="taskComment"
+          name=""
+          id=""
+        ></textarea>
       </fieldset>
     </div>
     <div class="form_footer" v-if="taskPen === true">
       <button class="cancel_button" @click="cancelTask">Cancel</button>
-      <button class="save_button" @click="saveTask">&plus; Add Task</button>
+      <button :disabled="taskChecked" class="save_button" @click="saveTask">
+        &plus; Add Task
+      </button>
     </div>
   </form>
 </template>
@@ -172,6 +190,8 @@ export default {
 
 <style lang="scss" scoped>
 @use "@/assets/scss/component/_form.scss";
+@use "@/assets/scss/component/_dragging.scss";
+
 * {
   // outline: 1px solid green;
 }
