@@ -14,17 +14,59 @@
     </nav>
   </header>
   <router-view />
+  <div
+    class="delete_area"
+    @drop="dragToTrash"
+    @dragover.prevent="dragOver"
+    @dragenter="dragEnter"
+    @dragleave="dragLeave"
+    :class="{ drop: enter }"
+  >
+    <i class="far fa-trash-alt fa-fw"></i>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      deleteTaskId: "",
+      enter: false,
+    };
   },
   methods: {
     toggleMenu() {
       let header = document.querySelector("header");
       header.classList.toggle("openMenu");
+    },
+    dragToTrash(event) {
+      event.preventDefault();
+      console.log(this.deleteTaskId, "drop");
+    },
+    dragStart(event) {
+      console.log(event.target.id);
+      console.dir(event.target);
+      this.deleteTaskId = event.target.id;
+    },
+    dragOver() {
+      // console.log(event);
+      // this.enter = true;
+    },
+    dragEnter(event) {
+      // 怎樣可以避免取到 i?
+      event.preventDefault();
+      if (event.target.nodeName !== "DIV") {
+        return;
+      }
+      console.log("enter", event.target.nodeName);
+      this.enter = true;
+    },
+    dragLeave(event) {
+      if (event.target.nodeName !== "DIV") {
+        return;
+      }
+      console.log("leave", event.target.nodeName);
+      this.enter = false;
     },
   },
 };
@@ -134,5 +176,75 @@ footer {
   font-family: Roboto-Italic;
   color: global.$medium-grey;
   text-align: center;
+}
+
+#app {
+  position: relative;
+  .delete_area {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 400px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 200px 200px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    i {
+      display: none;
+      cursor: pointer;
+    }
+    &:hover {
+      height: 200px;
+      background: #c8c8c86b;
+      animation: slow_breathing 1.4s linear infinite alternate;
+      transition: height 0.4s ease-in-out, background-color 0.6s linear;
+
+      i {
+        display: block;
+        font-size: 55px;
+        // transition: display 0.4s 2s ease-in-out;
+
+        animation: breathing 0.3s linear infinite alternate;
+      }
+    }
+  }
+}
+
+#app {
+  .drop {
+    height: 200px;
+    background: #c8c8c86b;
+    transition: height 0.4s ease-in-out, background-color 0.6s linear;
+    animation: slow_breathing 1.4s linear infinite alternate;
+
+    i {
+      display: block;
+      font-size: 55px;
+      animation: breathing 0.3s linear infinite alternate;
+      // transition: display 0.4s 2s ease-in-out;
+    }
+  }
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slow_breathing {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
 }
 </style>
