@@ -3,7 +3,6 @@
 .dragging {
   position: relative;
   &:hover {
-    transform: translate(0, -10px);
     box-shadow: 0px 0px 8px color.$dark-grey;
    &::before {
     content: "";
