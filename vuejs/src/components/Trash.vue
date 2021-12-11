@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="enterDropArea"
     class="delete_area"
     @drop.prevent="drogToDelete"
     @dragover.prevent="dragOver"
