@@ -42,9 +42,9 @@
       <fieldset class="column_file">
         <legend><i class="far fa-fw fa-file"></i>File</legend>
         <label for="attachment">
-          <div v-if="fileName !== null">
+          <div v-if="fileName">
             <p>{{ fileName }}</p>
-            <p>{{ fileTime }}</p>
+            <p>{{ fileTimeFromNow }}</p>
           </div>
           <input type="file" id="attachment" @change="getAttachment" />
           <span class="file_icon"></span>
@@ -63,6 +63,9 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
 export default {
   data() {
     return {
@@ -75,7 +78,7 @@ export default {
       taskPen: true,
       taskChecked: false,
       fileName: null,
-      fileTime: null,
+      fileTimeFromNow: null,
     };
   },
   computed: {
@@ -93,6 +96,11 @@ export default {
       };
       return task;
     },
+    uploadTimeFromNow() {
+      dayjs.extend(relativeTime);
+      console.log(dayjs(this.taskDate).fromNow());
+      return dayjs(this.taskDate).fromNow();
+    },
   },
   methods: {
     cancelTask(event) {
@@ -105,13 +113,16 @@ export default {
       this.$emit("createTask", this.taskData);
     },
     getAttachment(event) {
+      // file name
       let attachment = event.target.files[0].name;
       if (attachment) {
         this.taskFile = true;
       }
       this.fileName = attachment;
-      // 上傳時間用 day.js
-      this.fileTime = "uploaded yesterday";
+
+      //file time
+      let uploadDate = dayjs(new Date()).format("YYYY-MM-DD");
+      this.fileTimeFromNow = dayjs(uploadDate).fromNow();
     },
   },
 };

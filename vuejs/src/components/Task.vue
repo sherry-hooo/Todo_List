@@ -55,6 +55,7 @@
       </div>
     </div>
     <div class="form_body" v-if="taskPen === true">
+      <!-- 日期區 -->
       <fieldset class="column_deadline">
         <legend><i class="far fa-fw fa-calendar-alt"></i>Deadline</legend>
         <div>
@@ -76,13 +77,19 @@
           </label>
         </div>
       </fieldset>
+      <!-- 附件區 -->
       <fieldset class="column_file">
         <legend><i class="far fa-fw fa-file"></i>File</legend>
         <label for="attachment" @change="getAttachment">
+          <div v-if="fileName">
+            <p>{{ fileName }}</p>
+            <p>{{ fileTimeFromNow }}</p>
+          </div>
           <input :disabled="taskChecked" type="file" id="attachment" />
-          <span></span>
+          <span class="file_icon"></span>
         </label>
       </fieldset>
+      <!-- 留言區 -->
       <fieldset class="column_comment">
         <legend><i class="far fa-fw fa-comment-dots"></i>Comment</legend>
         <textarea
@@ -103,6 +110,9 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 export default {
   props: {
     task: {
@@ -121,6 +131,8 @@ export default {
       taskPen: this.task.taskPen,
       taskChecked: this.task.taskChecked,
       taskDeleted: false,
+      fileTimeFromNow: "",
+      fileName: "",
     };
   },
   computed: {
@@ -142,6 +154,11 @@ export default {
     briefDate() {
       return this.taskDate.slice(5).replace("-", "/");
     },
+    // uploadTimeFromNow() {
+    //   dayjs.extend(relativeTime);
+    //   console.log(dayjs("1999-01-01").fromNow());
+    //   return "test";
+    // },
   },
   methods: {
     cancelTask(event) {
@@ -154,8 +171,17 @@ export default {
       this.taskPen = false;
       this.$emit("editTask", this.taskData);
     },
-    getAttachment() {
-      //file
+    getAttachment(event) {
+      // file name
+      let attachment = event.target.files[0].name;
+      if (attachment) {
+        this.taskFile = true;
+      }
+      this.fileName = attachment;
+
+      //file time
+      let uploadDate = dayjs(new Date()).format("YYYY-MM-DD");
+      this.fileTimeFromNow = dayjs(uploadDate).fromNow();
     },
     setImportant(event) {
       //置頂action
@@ -217,6 +243,44 @@ export default {
   }
   i {
     font-size: 14px;
+  }
+}
+
+.file_icon {
+  width: 32px;
+  height: 32px;
+  background: global.$medium-grey;
+  border-radius: 2px;
+  text-align: center;
+  position: relative;
+  &:before {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 16px;
+    color: white;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  &:after {
+    content: "";
+    display: inline-block;
+    height: 1px;
+    width: 16px;
+    transform: rotate(90deg);
+    color: white;
+    background: #ffffff;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
   }
 }
 </style>
