@@ -60,7 +60,6 @@ export default {
     },
     getNewTaskData(taskData) {
       this.allTaskData.push(taskData);
-      // this.sortTasks(this.allTaskData);
       this.storageData("taskList", this.allTaskData);
     },
     storageData(dataName, data) {
@@ -87,7 +86,9 @@ export default {
       let fromIndex = this.allTaskData.findIndex(
         (task) => task.id === starTaskId
       );
-      move(fromIndex, 0, this.allTaskData);
+      setTimeout(() => {
+        move(fromIndex, 0, this.allTaskData);
+      }, 300);
       // 排序function
       function move(fromIndex, to, arr) {
         const item = arr.splice(fromIndex, 1)[0];
@@ -99,7 +100,6 @@ export default {
       this.draggingTaskId = event.target.id;
     },
     deleteTask(taskId) {
-      // console.log("Mytask收到要刪除", taskId);
       this.allTaskData = JSON.parse(localStorage.getItem("taskList")) || [];
 
       let deleteTaskIndex = this.allTaskData.findIndex(
