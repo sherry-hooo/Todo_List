@@ -1,5 +1,10 @@
 <template>
-  <form class="form" @wheel="wheelEvent" :class="{ dragging: !taskChecked }">
+  <form
+    class="form"
+    :class="{ dragging: !taskChecked && !taskPen }"
+    draggable="true"
+    :id="task.id"
+  >
     <div class="form_header" :class="{ header_fill: taskStar }">
       <!-- check -->
       <label :for="`check-${task.id}`" class="checkbox_icon">
@@ -40,17 +45,6 @@
         />
         <i class="fas fa-pencil-alt"></i>
         <!-- <i class="fa-fw far fa-edit"></i> -->
-      </label>
-      <!-- 刪除 -->
-      <label :for="`trash-${task.id}`" class="trash_icon">
-        <input
-          v-model="taskDeleted"
-          @click="deleteTask"
-          type="checkbox"
-          name="trash"
-          :id="`trash-${task.id}`"
-        />
-        <i class="far fa-trash-alt fa-fw"></i>
       </label>
       <!-- 縮圖 -->
       <div v-if="!taskChecked" class="content_thumbnails">
@@ -126,7 +120,7 @@ export default {
       taskStar: this.task.taskStar,
       taskPen: this.task.taskPen,
       taskChecked: this.task.taskChecked,
-      taskDeleted: "",
+      taskDeleted: false,
     };
   },
   computed: {
@@ -175,7 +169,9 @@ export default {
     },
     completeTask(event) {
       this.taskChecked = event.target.checked;
-      this.$emit("editTask", this.taskData);
+      setTimeout(() => {
+        this.$emit("editTask", this.taskData);
+      }, 500);
     },
     deleteTask(event) {
       this.taskDeleted = event.target.checked;
