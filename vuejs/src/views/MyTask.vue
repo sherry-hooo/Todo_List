@@ -19,32 +19,38 @@
         :key="task.id"
         :task="task"
         @editTask="editTask"
+        @dragstart="dragTask"
       ></Task>
     </section>
-  </main>
-  <footer>
-    <p>
+    <p class="displayCounts">
       {{ leftTasksCount }} tasks
       <span>{{ $router.name === "Completed" ? "completed" : "left" }}</span>
     </p>
+  </main>
+  <footer>
+    <Trash :draggingTaskId="draggingTaskId" @deleteTask="deleteTask"></Trash>
   </footer>
 </template>
 
 <script>
 import Template from "@/components/Template.vue";
 import Task from "@/components/Task.vue";
+import Trash from "@/components/Trash.vue";
 
 export default {
+  props: [],
   name: "MyTask",
   components: {
     Template,
     Task,
+    Trash,
   },
   data() {
     return {
       openTemplate: false,
       templateAction: "",
       allTaskData: JSON.parse(localStorage.getItem("taskList")) || [],
+      draggingTaskId: "",
     };
   },
   methods: {
@@ -54,6 +60,7 @@ export default {
     },
     getNewTaskData(taskData) {
       this.allTaskData.push(taskData);
+      // this.sortTasks(this.allTaskData);
       this.storageData("taskList", this.allTaskData);
     },
     storageData(dataName, data) {
@@ -71,6 +78,35 @@ export default {
         return task;
       });
       this.storageData("taskList", newAllTaskData);
+      if (modifiedContent.taskStar) {
+        console.log("置頂");
+        this.lineTop(modifiedContent.id);
+      }
+    },
+    lineTop(starTaskId) {
+      let fromIndex = this.allTaskData.findIndex(
+        (task) => task.id === starTaskId
+      );
+      move(fromIndex, 0, this.allTaskData);
+      // 排序function
+      function move(fromIndex, to, arr) {
+        const item = arr.splice(fromIndex, 1)[0];
+        arr.splice(to, 0, item);
+        return arr;
+      }
+    },
+    dragTask(event) {
+      this.draggingTaskId = event.target.id;
+    },
+    deleteTask(taskId) {
+      // console.log("Mytask收到要刪除", taskId);
+      this.allTaskData = JSON.parse(localStorage.getItem("taskList")) || [];
+
+      let deleteTaskIndex = this.allTaskData.findIndex(
+        (task) => task.id === Number(taskId)
+      );
+      this.allTaskData.splice(deleteTaskIndex, 1);
+      this.storageData("taskList", this.allTaskData);
     },
   },
   computed: {
