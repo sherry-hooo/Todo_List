@@ -1,24 +1,7 @@
 # vuejs
 
-## Project setup
-```
-npm install
-```
+## 專案內容
+Todo List
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 功能
+- 點擊新增待辦
