@@ -127,7 +127,12 @@ export default {
   margin: 0 auto 24px;
   border-radius: 5px 5px 0 0;
   box-shadow: 0 4px 4px global.$medium-grey;
-
+  @include global.mobile {
+    width: 500px;
+  }
+  @include global.tablet {
+    width: 620px;
+  }
   .header_fill {
     background: global.$light-yellow;
   }
