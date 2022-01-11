@@ -44,9 +44,9 @@
         <label for="attachment">
           <div v-if="fileName">
             <p>{{ fileName }}</p>
-            <p>{{ fileTimeFromNow }}</p>
+            <p>{{ uploadTimeFromNow }}</p>
           </div>
-          <input type="file" id="attachment" @change="getAttachment" />
+          <input type="file" id="attachment" @change="getFileDetail" />
           <span class="file_icon"></span>
         </label>
       </fieldset>
@@ -78,7 +78,7 @@ export default {
       taskPen: true,
       taskChecked: false,
       fileName: null,
-      fileTimeFromNow: null,
+      // uploadTimeFromNow: null,
     };
   },
   computed: {
@@ -112,7 +112,7 @@ export default {
       this.$emit("templateAction", "createTask");
       this.$emit("createTask", this.taskData);
     },
-    getAttachment(event) {
+    getFileDetail(event) {
       // file name
       let attachment = event.target.files[0].name;
       if (attachment) {
@@ -122,7 +122,7 @@ export default {
 
       //file time
       let uploadDate = dayjs(new Date()).format("YYYY-MM-DD");
-      this.fileTimeFromNow = dayjs(uploadDate).fromNow();
+      this.uploadTimeFromNow = dayjs(uploadDate).fromNow();
     },
   },
 };
